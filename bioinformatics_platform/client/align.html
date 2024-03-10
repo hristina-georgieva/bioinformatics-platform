@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Биоинформатична информационна система</title>
+</head>
+<body>
+    <nav>
+        <a href="./index.html">Начална страница</a>
+        <a href="./blast.html">BLAST</a>
+        <a href="./search.html">Търсене</a>
+        <a href="./align.html">Подравняване на две последователности</a>
+        <a href="./protein-synthesis.html">Протеинов синтез</a>
+    </nav>
+    <main>
+        <br><br><br>
+        <div id="align">
+            <div>
+                <label>Добавете две последователности, разделени със запетая: </label>
+                <br><br>
+                <textarea id="align-sequences-input" name="sequences-to-align" oninput="autoResize(this)" rows="4" cols="150"></textarea>
+                <br><br><br>
+                <button class="align-sequences-btn">Подравняване на последователности</button>
+                <br><br><br>
+            </div>
+            <label>Подравнени последователности: </label>
+            <br><br>
+            <textarea id="align-result" name="aligns-result" oninput="autoResize(this)" rows="4" cols="150"></textarea>
+        </div>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Биоинформатична информационна система</title>
+</head>
+<body>
+    <nav>
+        <a href="./index.html">Начална страница</a>
+        <a href="./blast.html">BLAST</a>
+        <a href="./search.html">Търсене</a>
+        <a href="./align.html">Подравняване на две последователности</a>
+        <a href="./protein-synthesis.html">Протеинов синтез</a>
+    </nav>
+    <main>
+        <br><br><br>
+        
+        <form>
+            <label for="options">Изберете опция за търсене:</label>
+            <select name="options" id="options">
+                <option value="search-by-organism-name"> Търсене по име на организъм </option>
+                <option value="search-by-gene-name"> Търсене по име на ген </option>   
+                <option value="search-by-protein-name"> Търсене по име на протеин </option>
+                <option value="search-by-motive"> Търсене по мотив от последователност </option>
+            </select>
+            <br><br><br>
+          </form>
+        <div>
+           <input placeholder="Въведете име или мотив" id="search-input" size="50">
+           <button class="search-btn">Търсене</button>
+        </div>
+
+        <br><br>
+
+        <table id="table">
+            <thead>
+                <th>ID</th>
+                <th>Последователност</th>
+                <th>Име на организъм</th>
+                <th>Име на ген</th>
+                <th>Име на протеин</th>
+                <th>Дължина на последователност</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>

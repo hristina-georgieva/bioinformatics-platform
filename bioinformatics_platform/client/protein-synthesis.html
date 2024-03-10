@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Биоинформатична информационна система</title>
+</head>
+<body>
+    <nav>
+        <a href="./index.html">Начална страница</a>
+        <a href="./blast.html">BLAST</a>
+        <a href="./search.html">Търсене</a>
+        <a href="./align.html">Подравняване на две последователности</a>
+        <a href="./protein-synthesis.html">Протеинов синтез</a>
+    </nav>
+    <main>
+        <br><br><br>
+        <div id="protein-synthesis">
+            <div id="synthesis">
+                <div>
+                    <label>ДНК последователност:</label><br><br>
+                    <textarea id="DNA" name="dna" oninput="autoResize(this)" rows="4" cols="50"></textarea>
+                </div>
+                <br><br>
+                <div>
+                    <button class="transcription">Транскрипция</button>
+                </div>
+                <br><br>
+                <div>
+                    <label>мРНК последователност:</label><br><br>
+                    <textarea id="mRNA" name="mRna" oninput="autoResize(this)" rows="4" cols="50"></textarea>
+                </div>
+                <br><br>
+                <div>
+                    <button class="translation">Транслация</button>
+                </div>
+                <br><br>
+                <div>
+                    <label>Протеинова последователност:</label><br><br>
+                    <textarea id="protein" name="protein" oninput="autoResize(this)" rows="4" cols="50"></textarea>
+                </div>
+                <img alt="amino-acids" src="/client/images/amino-acids.jpg"/>
+            </div>
+            <div id="transcription-translation-image">
+                <img alt="transcription-translation-model" src="/client/images/transcription-translation.gif"/>
+                <img alt="dna-to-protein-scheme" src="/client/images/dna-to-protein.png"/>
+            </div>
+        </div>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
