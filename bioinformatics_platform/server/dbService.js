@@ -214,6 +214,52 @@ class DbService {
         }
     }
 
+
+    async insertNewSequence(sequence, organismName, geneName, proteinName) {
+        try{
+            const sequenceLength = sequence.length;
+
+            const responseFromGenes = await new Promise((resolve, reject) => {
+                const query2 = "SELECT * FROM genes;";
+
+                connection.query(query2, (err, results) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(results);
+                })
+            });
+
+            const gene = responseFromGenes.find(el => el.name.toLowerCase()==geneName.toLowerCase());
+
+            let geneId;
+
+            if (gene) {
+                geneId = gene.id;
+            }else {
+                const insertGene = await new Promise ((resolve, reject) => {
+                    const query = "INSERT INTO genes (name, protein_name) VALUES (?,?);";
+    
+                    connection.query(query, [geneName, proteinName], (err, result) => {
+                        if (err) reject(new Error(err.message));
+                        resolve(result.insertId);
+                    })
+                });
+                geneId = insertGene; 
+            }
+
+            const insertId = await new Promise ((resolve, reject) => {
+                const query = "INSERT INTO sequences (protein_sequence, organism_name, gene_id, length) VALUES (?,?,?,?);";
+
+                connection.query(query, [sequence, organismName, geneId, sequenceLength], (err, result) => {
+                    if (err) reject(new Error(err.message));
+                    resolve(result.insertId);
+                })
+            });
+            console.log(insertId);
+        }catch(error) {
+            console.error(error);
+        }
+    }
+
 }
 
 module.exports = DbService;

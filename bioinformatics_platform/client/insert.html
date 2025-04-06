@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Биоинформатична информационна система</title>
+</head>
+<body>
+    <nav>
+        <a href="./index.html">Начална страница</a>
+        <a href="./blast.html">BLAST</a>
+        <a href="./search.html">Търсене</a>
+        <a href="./align.html">Подравняване на две последователности</a>
+        <a href="./protein-synthesis.html">Протеинов синтез</a>
+    </nav>
+    <main>
+        <br><br><br>
+        <div id="align">
+            <label>Добавете последователност: </label>
+            <br><br>
+            <textarea id="new-sequence-input" name="sequence-to-insert" oninput="autoResize(this)" rows="4" cols="150"></textarea>
+            <br><br><br>
+            <label>Добавете име на организъм: </label>
+            <br><br>
+            <textarea id="new-organism-name-input" name="organism-name-to-insert" oninput="autoResize(this)" rows="4" cols="150"></textarea>
+            <br><br><br>
+            <label>Добавете име на ген: </label>
+            <br><br>
+            <textarea id="new-gene-name-input" name="gene-name-to-insert" oninput="autoResize(this)" rows="4" cols="150"></textarea>
+            <br><br><br>
+            <label>Добавете име на протеин: </label>
+            <br><br>
+            <textarea id="new-protein-name-input" name="protein-name-to-insert" oninput="autoResize(this)" rows="4" cols="150"></textarea>
+            <br><br><br>
+            <button class="insert-sequence-btn">Добавяне на последователност</button>
+            <br><br><br>
+        </div>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>

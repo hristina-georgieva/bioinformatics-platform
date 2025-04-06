@@ -1,3 +1,4 @@
+// const { response } = require("express");
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -76,6 +77,38 @@ document.addEventListener('DOMContentLoaded', () => {
             let protein = translation(dna);
             document.querySelector('#protein').value = protein;
             autoResize(document.querySelector('#protein'));
+        }
+        if (e.target.classList.contains('insert-sequence-btn')) {
+            let sequence = document.querySelector('#new-sequence-input').value.toUpperCase();
+            let organismName = document.querySelector('#new-organism-name-input').value;
+            let geneName = document.querySelector('#new-gene-name-input').value;
+            let proteinName = document.querySelector('#new-protein-name-input').value;
+
+            if(checkIfIsDNASequence(sequence)){
+                const dna = sequence;
+                const protein = translation(dna.toUpperCase());
+                sequence = protein;
+            }
+           
+            document.querySelector('#new-sequence-input').value = "";
+            document.querySelector('#new-organism-name-input').value = "";
+            document.querySelector('#new-gene-name-input').value = "";
+            document.querySelector('#new-protein-name-input').value = "";
+
+            fetch('http://localhost:5000/insert', {
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    sequence: sequence,
+                    organismName: organismName,
+                    geneName: geneName,
+                    proteinName: proteinName
+                })
+            })
+            .then(response => response.json())
+            .catch(err => console.error(err));
         }
     })
     

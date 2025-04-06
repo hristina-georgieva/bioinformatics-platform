@@ -20,7 +20,7 @@ app.get('/searchByOrganism/:organism_name', (request, response) => {
     result
     .then(data => response.json({data : data}))
     .catch(err => console.error(err));
-})
+});
 
 app.get('/searchByGene/:gene_name', (request, response) => {
     const { gene_name } = request.params;
@@ -31,7 +31,7 @@ app.get('/searchByGene/:gene_name', (request, response) => {
     result
     .then(data => response.json({data : data}))
     .catch(err => console.error(err));
-})
+});
 
 app.get('/searchByProtein/:protein_name', (request, response) => {
     const { protein_name } = request.params;
@@ -42,7 +42,7 @@ app.get('/searchByProtein/:protein_name', (request, response) => {
     result
     .then(data => response.json({data : data}))
     .catch(err => console.error(err));
-})
+});
 
 app.get('/searchByMotive/:motive', (request, response) => {
     const { motive } = request.params;
@@ -53,7 +53,7 @@ app.get('/searchByMotive/:motive', (request, response) => {
     result
     .then(data => response.json({data : data}))
     .catch(err => console.error(err));
-})
+});
 
 app.get('/searchAndAlign/:sequence', (request, response) => {
     const { sequence } = request.params;
@@ -64,6 +64,17 @@ app.get('/searchAndAlign/:sequence', (request, response) => {
     result
     .then(data => response.json({data : data}))
     .catch(err => console.error(err));
-})
+});
+
+app.post('/insert', (request, response) => {
+    const { sequence, organismName, geneName, proteinName } = request.body;
+    const db = dbService.getDbServiceInstance();
+
+    const result = db.insertNewSequence(sequence, organismName, geneName, proteinName);
+
+    result
+    .then(data => response.json({success : true}))
+    .catch(err => console.error(err));
+});
 
 app.listen(process.env.PORT, () => console.log('app is running'));
